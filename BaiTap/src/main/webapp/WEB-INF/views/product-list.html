@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh sách sản phẩm</title>
+</head>
+<body>
+<h2>Danh sách sản phẩm</h2>
+<a th:href="@{/category-product}">Quay về trang chủ</a>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>STT</th>
+    <th>Tên sản phẩm</th>
+    <th>Giá</th>
+    <th>Số lượng</th>
+    <th>Danh mục</th>
+    <th>Trạng thái</th>
+    <th>Hành động</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="product1 : ${product1}">
+    <td th:text="${product1.id}"></td>
+    <td th:text="${product1.name}"></td>
+    <td th:text="${product1.price}"></td>
+    <td th:text="${product1.stock}"></td>
+    <td th:text="${product1.categoryId}"></td>
+    <td th:text="${product1.status ? 'Active' : 'Inactive'}"></td>
+    <td>
+      <a th:href="@{/product/update/{id}(id=${product1.id})}">Chỉnh sửa</a>
+      |
+      <a th:href="@{/product/delete/{id}(id=${product1.id})}">Xoá</a>
+      |
+      <a th:href="@{/order/add-to-cart/{id}(id=${product1.id})}">Thêm vào giỏ hàng</a> <!-- Nút Thêm vào giỏ hàng -->
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<a th:href="@{/product/add}">Thêm mới</a>
+</body>
+</html>

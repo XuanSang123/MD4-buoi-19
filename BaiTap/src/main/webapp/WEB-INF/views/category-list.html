@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Category List</h2>
+<a th:href="@{/category/add}">Thêm mới</a>
+<table>
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Tên</th>
+        <th>Trạng thái</th>
+        <th>Hàn động</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="category1 : ${category}">
+        <td th:text="${category1.id}"></td>
+        <td th:text="${category1.name}"></td>
+        <td th:text="${category1.status ? 'Active' : 'Inactive'}"></td>
+        <td>
+            <a th:href="@{/category/{id}(id=${category1.id})}">Xoá</a> |
+            <a th:href="@{/category/delete/{id}(id=${category1.id})}">Chỉnh sửa</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/category-product}">Quay lại trang chủ</a>
+</body>
+</html>

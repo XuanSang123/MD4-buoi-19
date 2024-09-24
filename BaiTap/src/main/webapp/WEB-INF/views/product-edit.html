@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Product</title>
+</head>
+<body>
+<h2>Update Product</h2>
+
+<form th:action="@{/product/update/{id}(id=${product1.id})}" th:method="post">
+    <input type="hidden" name="id" th:value="${product1.id}">
+
+    <label for="name">Product Name:</label>
+    <input type="text" id="name" name="name" th:value="${product1.name}" required>
+    <br><br>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" step="0.01" th:value="${product1.price}" required>
+    <br><br>
+
+    <label for="stock">Stock:</label>
+    <input type="number" id="stock" name="stock" th:value="${product1.stock}" required>
+    <br><br>
+
+    <label for="categoryId">Category ID:</label>
+    <input type="number" id="categoryId" name="categoryId" th:value="${product1.categoryId}" required>
+    <br><br>
+
+    <label for="status">Active:</label>
+    <input type="checkbox" id="status" name="status" th:checked="${product1.status}">
+    <br><br>
+
+    <button type="submit">Update Product</button>
+</form>
+
+<a href="/product">Back to Product List</a>
+</body>
+</html>
